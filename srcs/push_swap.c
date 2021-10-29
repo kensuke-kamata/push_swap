@@ -6,7 +6,7 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 22:20:58 by kkamata           #+#    #+#             */
-/*   Updated: 2021/10/28 11:50:01 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/10/29 16:00:53 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ int	main(int argc, char **argv)
 	t_stack		*stack;
 
 	size = argc - 1;
-	if (!valid_argc(size))
-		ps_exit(NULL, FAILURE, ERRMSG);
+	valid_argc(size);
 	stack = init_stack();
 	load_argv(stack, argc, argv);
 	if (is_duplicated(stack->a))
@@ -48,11 +47,11 @@ int	main(int argc, char **argv)
 	if (size < 7)
 		branch_less7(stack, size);
 	if (size >= 7)
-		printf("over7\n");
-	// printf("stack B:\n");
-	// lstshow(stack->b);
-	answer(stack->ans);
+		branch_more7(stack, size);
+	// answer(stack->ans);
 	printf("stack A:\n");
 	lstshow(stack->a);
+	printf("stack B:\n");
+	lstshow(stack->b);
 	ps_exit(stack, SUCCESS, NULL);
 }

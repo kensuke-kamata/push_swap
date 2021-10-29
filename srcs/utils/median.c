@@ -6,7 +6,7 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 08:07:35 by kkamata           #+#    #+#             */
-/*   Updated: 2021/10/28 08:08:10 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/10/29 15:58:35 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	median(t_stack *stack, t_node *head)
 	if (!arr)
 		ps_exit(stack, FAILURE, "median");
 	n = head->next;
-	res = n->value;
 	i = 0;
 	while (n != head)
 	{
@@ -33,8 +32,6 @@ int	median(t_stack *stack, t_node *head)
 		n = n->next;
 	}
 	insertion_sort(arr, size);
-	if (size == 4)
-		size--;
 	res = arr[size / 2];
 	free(arr);
 	return (res);

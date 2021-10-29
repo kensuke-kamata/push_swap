@@ -6,7 +6,7 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 08:29:57 by kkamata           #+#    #+#             */
-/*   Updated: 2021/10/28 11:36:33 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/10/29 15:57:34 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,51 +15,51 @@
 static
 void	push_to_a(t_stack *stack)
 {
-	t_node	*n;
+	t_node	*n1;
+	t_node	*n2;
 
-	n = stack->b->next;
-	while (n != stack->b)
+	n1 = stack->b->next;
+	while (n1 != stack->b)
 	{
-		n = n->next;
+		n1 = n1->next;
 		pa(stack);
+		n2 = stack->a->next;
+		if (n2->value > n2->next->value)
+			sa(stack);
 	}
 }
 
 static
-void	push_to_b(t_stack *stack)
+int	push_to_b(t_stack *stack, int size_a)
 {
-	t_node	*n;
-	int		v;
-	int		size;
+	int		size_b;
 	int		criteria;
 
-	n = stack->a->next;
-	size = lstsize(stack->a);
+	size_b = 0;
 	criteria = median(stack, stack->a);
-	while (size > 3 && n != stack->a)
+	while (size_a > 3)
 	{
-		v = n->value;
-		n = n->next;
-		if (v < criteria)
+		if (stack->a->next->value < criteria)
 		{
 			pb(stack);
-			size--;
+			size_a--;
+			size_b++;
 		}
 		else
 			ra(stack);
 	}
+	return (size_b);
 }
 
-void	asc_456(t_stack *stack)
+void	asc_456(t_stack *stack, int size_a)
 {
-	int		size;
+	int		size_b;
 
-	push_to_b(stack);
-	asc_3a(stack);
-	size = lstsize(stack->b);
-	if (size == 2)
+	size_b = push_to_b(stack, size_a);
+	if (size_b == 2)
 		desc_2b(stack);
-	if (size == 3)
+	if (size_b == 3)
 		desc_3b(stack);
+	asc_3a(stack);
 	push_to_a(stack);
 }

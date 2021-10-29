@@ -31,10 +31,10 @@ SRC			= push_swap.c \
 			  lst/new.c \
 			  lst/show.c \
 			  lst/size.c \
-			  opes/push.c \
-			  opes/rotate.c \
-			  opes/rrotate.c \
-			  opes/swap.c \
+			  ops/push.c \
+			  ops/rotate.c \
+			  ops/rrotate.c \
+			  ops/swap.c \
 			  output/answer.c \
 			  rules/rule2.c \
 			  rules/rule3.c \

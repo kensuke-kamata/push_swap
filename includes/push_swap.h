@@ -6,7 +6,7 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 21:52:53 by kkamata           #+#    #+#             */
-/*   Updated: 2021/10/28 11:36:50 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/10/29 16:00:38 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 void	ps_exit(t_stack *stack, t_exit status, char *msg);
 
 // +--- arg --- + //
-t_bool	valid_argc(int argc);
+void	valid_argc(int size);
 void	load_argv(t_stack *stack, int argc, char **argv);
 
 // +--- init --- + //
@@ -44,6 +44,10 @@ t_stack	*init_stack(void);
 // +--- valid --- + //
 t_bool	is_duplicated(t_node *head);
 t_bool	is_sorted(t_node *head);
+
+// +--- branch --- + //
+void	branch_less7(t_stack *stack, int size_a);
+void	branch_more7(t_stack *stack, int size_a);
 
 // +--- lst --- + //
 t_node	*lstnew(int value);
@@ -80,13 +84,11 @@ void	desc_2b(t_stack *stack);
 
 // +--- rules/rule3 --- + //
 void	asc_3a(t_stack *stack);
+void	asc_3b(t_stack *stack);
 void	desc_3b(t_stack *stack);
 
 // +--- rules/rule456 --- + //
-void	asc_456(t_stack *stack);
-
-// +--- branch --- + //
-void	branch_less7(t_stack *stack, int size);
+void	asc_456(t_stack *stack, int size_a);
 
 // +--- output --- + //
 void	answer(t_node *head);

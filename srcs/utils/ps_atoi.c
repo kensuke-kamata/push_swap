@@ -6,7 +6,7 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 07:38:59 by kkamata           #+#    #+#             */
-/*   Updated: 2021/10/28 09:06:44 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/10/30 12:22:44 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,18 @@ int	ps_atoi(t_stack *stack, char *str)
 	while (ft_isspace(*str))
 		str++;
 	sign = 1;
+	if (*str == '-')
+		sign = -1;
 	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			sign = -1;
 		str++;
-	}
 	res = 0;
 	while (1)
 	{
 		if (!ft_isdigit(*str))
 			ps_exit(stack, FAILURE, ERRMSG);
-		if (res > (INT_MAX - (*str - '0')) / 10)
-		{
-			if (sign == 1 || (sign == -1 && (*str - '0') > 8))
-				ps_exit(stack, FAILURE, ERRMSG);
-		}
 		res = (res * 10) + (*str++ - '0');
+		if ((sign == 1 && INT_MAX < res) || (sign == -1 && INT_MAX < res - 1))
+			ps_exit(stack, FAILURE, ERRMSG);
 		while (ft_isspace(*str))
 			str++;
 		if (*str == '\0')

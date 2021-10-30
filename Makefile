@@ -23,8 +23,6 @@ SRCDIR		= ./srcs/
 ##### Source files
 
 SRC			= push_swap.c \
-			  arg/arg.c \
-			  branch/branch.c \
 			  init/init.c \
 			  lst/add.c \
 			  lst/clear.c \
@@ -36,9 +34,13 @@ SRC			= push_swap.c \
 			  ops/rrotate.c \
 			  ops/swap.c \
 			  output/answer.c \
-			  rules/rule2.c \
-			  rules/rule3.c \
-			  rules/rule456.c \
+			  ps_less7/main.c \
+			  ps_less7/rule2.c \
+			  ps_less7/rule3.c \
+			  ps_less7/rule456.c \
+			  ps_more7/main.c \
+			  ps_more7/qsort_a.c \
+			  ps_more7/qsort_b.c \
 			  utils/insertion_sort.c \
 			  utils/median.c \
 			  utils/ps_atoi.c \

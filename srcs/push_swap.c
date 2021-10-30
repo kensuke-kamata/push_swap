@@ -6,12 +6,11 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 22:20:58 by kkamata           #+#    #+#             */
-/*   Updated: 2021/10/29 16:00:53 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/10/30 10:55:31 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
 
 // void end(void)__attribute__((destructor)); void end(void) { system("leaks push_swap"); }
 
@@ -34,24 +33,28 @@ void	ps_exit(t_stack *stack, t_exit status, char *msg)
 int	main(int argc, char **argv)
 {
 	int			size;
+	int			sorted;
 	t_stack		*stack;
 
 	size = argc - 1;
-	valid_argc(size);
-	stack = init_stack();
-	load_argv(stack, argc, argv);
+	if (size < 1)
+		ps_exit(NULL, FAILURE, NULL);
+	if (SIZELIMIT < size)
+		ps_exit(NULL, FAILURE, ERRMSG);
+	stack = (t_stack *)malloc(sizeof(t_stack));
+	if (!stack)
+		ps_exit(NULL, FAILURE, ERRMSG);
+	ps_init(stack, argc, argv);
 	if (is_duplicated(stack->a))
 		ps_exit(stack, FAILURE, ERRMSG);
 	if (is_sorted(stack->a))
 		ps_exit(stack, SUCCESS, NULL);
+	sorted = 0;
 	if (size < 7)
-		branch_less7(stack, size);
+		sorted = ps_less7(stack, size);
 	if (size >= 7)
-		branch_more7(stack, size);
-	// answer(stack->ans);
-	printf("stack A:\n");
-	lstshow(stack->a);
-	printf("stack B:\n");
-	lstshow(stack->b);
+		sorted = ps_more7(stack, size);
+	if (sorted == size)
+		answer(stack->ans);
 	ps_exit(stack, SUCCESS, NULL);
 }

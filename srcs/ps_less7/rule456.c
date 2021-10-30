@@ -6,7 +6,7 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 08:29:57 by kkamata           #+#    #+#             */
-/*   Updated: 2021/10/29 15:57:34 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/10/30 09:51:36 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	push_to_b(t_stack *stack, int size_a)
 	return (size_b);
 }
 
-void	asc_456(t_stack *stack, int size_a)
+int	asc_456(t_stack *stack, int size_a)
 {
 	int		size_b;
 
@@ -62,4 +62,5 @@ void	asc_456(t_stack *stack, int size_a)
 		desc_3b(stack);
 	asc_3a(stack);
 	push_to_a(stack);
+	return (size_a);
 }

@@ -6,7 +6,7 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 06:13:20 by kkamata           #+#    #+#             */
-/*   Updated: 2021/10/28 06:18:29 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/10/30 09:28:15 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define DEFINE_H
 
 # define ERRMSG "Error"
-# define ARGCLIMIT 1000
+# define SIZELIMIT 1000
 
 typedef enum e_bool
 {

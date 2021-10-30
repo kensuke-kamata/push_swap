@@ -6,7 +6,7 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 21:52:53 by kkamata           #+#    #+#             */
-/*   Updated: 2021/10/29 16:00:38 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/10/30 10:30:28 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,13 @@
 // +--- push_swap --- + //
 void	ps_exit(t_stack *stack, t_exit status, char *msg);
 
-// +--- arg --- + //
-void	valid_argc(int size);
-void	load_argv(t_stack *stack, int argc, char **argv);
-
 // +--- init --- + //
-t_node	*init_list(void);
-t_stack	*init_stack(void);
+void	ps_init(t_stack *stack, int argc, char **argv);
 
 // +--- valid --- + //
 t_bool	is_duplicated(t_node *head);
 t_bool	is_sorted(t_node *head);
 
-// +--- branch --- + //
-void	branch_less7(t_stack *stack, int size_a);
-void	branch_more7(t_stack *stack, int size_a);
 
 // +--- lst --- + //
 t_node	*lstnew(int value);
@@ -77,18 +69,28 @@ void	rrotate(t_node *head);
 void	rra(t_stack *stack);
 void	rrb(t_stack *stack);
 
-// +--- rules/rule2 --- + //
-void	asc_2a(t_stack *stack);
-void	asc_2b(t_stack *stack);
-void	desc_2b(t_stack *stack);
+// +--- ps_less7/main --- + //
+int		ps_less7(t_stack *stack, int size_a);
 
-// +--- rules/rule3 --- + //
-void	asc_3a(t_stack *stack);
-void	asc_3b(t_stack *stack);
-void	desc_3b(t_stack *stack);
+// +--- ps_less7/rule2 --- + //
+int		asc_2a(t_stack *stack);
+int		asc_2b(t_stack *stack);
+int		desc_2b(t_stack *stack);
 
-// +--- rules/rule456 --- + //
-void	asc_456(t_stack *stack, int size_a);
+// +--- ps_less7/rule3 --- + //
+int		asc_3a(t_stack *stack);
+int		asc_3b(t_stack *stack);
+int		desc_3b(t_stack *stack);
+
+// +--- ps_less7/rule456 --- + //
+int		asc_456(t_stack *stack, int size_a);
+
+// +--- ps_more7/main --- + //
+int		ps_more7(t_stack *stack, int size_a);
+
+// +--- ps_more7/qsort --- + //
+int		ps_qsort_a(t_stack *stack, int size_a);
+int		ps_qsort_b(t_stack *stack, int size_b);
 
 // +--- output --- + //
 void	answer(t_node *head);

@@ -6,14 +6,14 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 08:29:54 by kkamata           #+#    #+#             */
-/*   Updated: 2021/10/29 09:20:41 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/10/30 09:44:42 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
 // Sort three numbers of stack b in descending order
-void	desc_3b(t_stack *stack)
+int	desc_3b(t_stack *stack)
 {
 	t_node	*n1;
 	t_node	*n2;
@@ -43,9 +43,10 @@ void	desc_3b(t_stack *stack)
 		sb(stack);
 		rrb(stack);
 	}
+	return (3);
 }
 
-void	asc_3b(t_stack *stack)
+int	asc_3b(t_stack *stack)
 {
 	t_node	*n1;
 	t_node	*n2;
@@ -75,10 +76,11 @@ void	asc_3b(t_stack *stack)
 		sb(stack);
 		rrb(stack);
 	}
+	return (3);
 }
 
 // Sort three numbers of stack a in ascending order
-void	asc_3a(t_stack *stack)
+int	asc_3a(t_stack *stack)
 {
 	t_node	*n1;
 	t_node	*n2;
@@ -108,4 +110,5 @@ void	asc_3a(t_stack *stack)
 		sa(stack);
 		rra(stack);
 	}
+	return (3);
 }

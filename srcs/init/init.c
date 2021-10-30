@@ -6,13 +6,14 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 06:30:20 by kkamata           #+#    #+#             */
-/*   Updated: 2021/10/28 06:32:31 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/10/30 09:33:20 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-t_node	*init_list(void)
+static
+t_node	*init_lst(void)
 {
 	t_node	*head;
 
@@ -24,17 +25,21 @@ t_node	*init_list(void)
 	return (head);
 }
 
-t_stack	*init_stack(void)
+void	ps_init(t_stack *stack, int argc, char **argv)
 {
-	t_stack		*stack;
+	int		i;
+	int		value;
 
-	stack = (t_stack *)malloc(sizeof(t_stack));
-	if (!stack)
-		ps_exit(stack, FAILURE, "init_stack\n");
-	stack->a = init_list();
-	stack->b = init_list();
-	stack->ans = init_list();
+	stack->a = init_lst();
+	stack->b = init_lst();
+	stack->ans = init_lst();
 	if (!stack->a || !stack->b || !stack->ans)
-		ps_exit(stack, FAILURE, "init_stack\n");
-	return (stack);
+		ps_exit(stack, FAILURE, ERRMSG);
+	i = 1;
+	while (i < argc)
+	{
+		value = ps_atoi(stack, argv[i]);
+		lstadd_back(stack->a, lstnew(value));
+		i++;
+	}
 }

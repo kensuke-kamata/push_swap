@@ -6,7 +6,7 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 22:20:58 by kkamata           #+#    #+#             */
-/*   Updated: 2021/10/30 12:38:10 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/10/30 13:31:41 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,16 @@
 
 // void end(void)__attribute__((destructor));
 // void end(void) { system("leaks push_swap"); }
+
+// void	debug(t_stack *stack)
+// {
+// 	ft_printf("STACK A : ");
+// 	lstshow(stack->a);
+// 	ft_printf("\n");
+// 	ft_printf("STACK B : ");
+// 	lstshow(stack->b);
+// 	ft_printf("\n");
+// }
 
 void	ps_exit(t_stack *stack, t_exit status, char *msg)
 {

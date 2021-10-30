@@ -6,12 +6,13 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 11:14:59 by kkamata           #+#    #+#             */
-/*   Updated: 2021/10/28 11:15:44 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/10/30 13:31:50 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
+static
 void	_answer(int value)
 {
 	if (value == PA)

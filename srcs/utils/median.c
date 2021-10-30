@@ -6,7 +6,7 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 08:07:35 by kkamata           #+#    #+#             */
-/*   Updated: 2021/10/29 15:58:35 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/10/30 12:25:17 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	median(t_stack *stack, t_node *head)
 	size = lstsize(head);
 	arr = (int *)malloc(sizeof(int) * (size + 1));
 	if (!arr)
-		ps_exit(stack, FAILURE, "median");
+		ps_exit(stack, FAILURE, ERRMSG);
 	n = head->next;
 	i = 0;
 	while (n != head)

@@ -6,13 +6,14 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 22:20:58 by kkamata           #+#    #+#             */
-/*   Updated: 2021/10/30 10:55:31 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/10/30 12:38:10 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// void end(void)__attribute__((destructor)); void end(void) { system("leaks push_swap"); }
+// void end(void)__attribute__((destructor));
+// void end(void) { system("leaks push_swap"); }
 
 void	ps_exit(t_stack *stack, t_exit status, char *msg)
 {

@@ -6,7 +6,7 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 21:52:53 by kkamata           #+#    #+#             */
-/*   Updated: 2021/10/30 10:30:28 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/10/30 12:36:22 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	ps_init(t_stack *stack, int argc, char **argv);
 // +--- valid --- + //
 t_bool	is_duplicated(t_node *head);
 t_bool	is_sorted(t_node *head);
-
 
 // +--- lst --- + //
 t_node	*lstnew(int value);

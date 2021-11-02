@@ -6,7 +6,7 @@
 #    By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/30 12:25:44 by kkamata           #+#    #+#              #
-#    Updated: 2021/10/30 12:25:47 by kkamata          ###   ########.fr        #
+#    Updated: 2021/11/02 22:11:46 by kkamata          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,8 @@ SRC			= push_swap.c \
 			  ops/rrotate.c \
 			  ops/swap.c \
 			  output/answer.c \
+			  output/cancel.c \
+			  output/replace.c \
 			  ps_less7/main.c \
 			  ps_less7/rule2.c \
 			  ps_less7/rule3.c \

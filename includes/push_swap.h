@@ -6,7 +6,7 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 21:52:53 by kkamata           #+#    #+#             */
-/*   Updated: 2021/10/30 13:31:34 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/11/02 22:08:52 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,9 @@ int		ps_qsort_a(t_stack *stack, int size_a);
 int		ps_qsort_b(t_stack *stack, int size_b);
 
 // +--- output --- + //
-void	answer(t_node *head);
+void	answer(t_stack *head);
+int		replace(t_node *head, t_node *target);
+int		cancel(t_node *head, t_node *target);
 
 // +--- utils --- + //
 void	insertion_sort(int	*arr, int len);

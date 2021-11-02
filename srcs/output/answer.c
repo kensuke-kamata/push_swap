@@ -6,11 +6,29 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 11:14:59 by kkamata           #+#    #+#             */
-/*   Updated: 2021/10/30 13:31:50 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/11/02 22:08:31 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+static
+void	reducer(t_node *head)
+{
+	t_node	*n;
+	int		count;
+
+	count = 0;
+	n = head->next;
+	while (n != head)
+	{
+		count += replace(head, n);
+		count += cancel(head, n);
+		n = n->next;
+	}
+	if (count)
+		reducer(head);
+}
 
 static
 void	_answer(int value)
@@ -39,14 +57,17 @@ void	_answer(int value)
 		ft_putendl_fd("rrr", 1);
 }
 
-void	answer(t_node *head)
+void	answer(t_stack *stack)
 {
-	t_node	*n;
+	t_node	*head;
+	t_node	*target;
 
-	n = head->next;
-	while (n != head)
+	head = stack->ans;
+	reducer(head);
+	target = head->next;
+	while (target != head)
 	{
-		_answer(n->value);
-		n = n->next;
+		_answer(target->value);
+		target = target->next;
 	}
 }

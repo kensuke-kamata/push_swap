@@ -6,7 +6,7 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 11:14:59 by kkamata           #+#    #+#             */
-/*   Updated: 2021/11/02 22:08:31 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/11/02 22:17:37 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,15 @@ void	_answer(int value)
 		ft_putendl_fd("rrr", 1);
 }
 
-void	answer(t_stack *stack)
+void	answer(t_node *head)
 {
-	t_node	*head;
-	t_node	*target;
+	t_node	*n;
 
-	head = stack->ans;
 	reducer(head);
-	target = head->next;
-	while (target != head)
+	n = head->next;
+	while (n != head)
 	{
-		_answer(target->value);
-		target = target->next;
+		_answer(n->value);
+		n = n->next;
 	}
 }

@@ -1,0 +1,9 @@
+*.o
+push_swap
+libft.a
+
+pyviz.py
+push_swap_tester
+
+.DS_Store
+.vscode

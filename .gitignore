@@ -1,13 +1,12 @@
-.gitignore
-*.o
+### push_swap related files
 push_swap
 libft.a
-a.out
-memo
-test.c
+*.o
 
+### Tester
 pyviz.py
 push_swap_tester
 
+### Garbages
 .DS_Store
 .vscode

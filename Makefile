@@ -6,7 +6,7 @@
 #    By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/30 12:25:44 by kkamata           #+#    #+#              #
-#    Updated: 2021/11/02 22:11:46 by kkamata          ###   ########.fr        #
+#    Updated: 2021/11/11 16:45:01 by kkamata          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,15 +48,20 @@ SRC			= push_swap.c \
 			  output/answer.c \
 			  output/cancel.c \
 			  output/replace.c \
-			  ps_less7/main.c \
+			  ps_less7/ps_less7.c \
 			  ps_less7/rule2.c \
 			  ps_less7/rule3.c \
 			  ps_less7/rule456.c \
-			  ps_more7/main.c \
+			  ps_more7/ps_more7.c \
 			  ps_more7/qsort_a.c \
+			  ps_more7/qsort_a_utils.c \
 			  ps_more7/qsort_b.c \
+			  ps_more7/qsort_b_utils.c \
+			  ps_more7/qsort_reverse.c \
+			  utils/debug.c \
 			  utils/insertion_sort.c \
 			  utils/median.c \
+			  utils/pivot.c \
 			  utils/ps_atoi.c \
 			  valid/valid.c
 
@@ -85,7 +90,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(LIBFTMAKE)
-	$(CC) $(CFLAGS) $(INCLUDES) -o $(NAME) $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) -g $(INCLUDES) -o $(NAME) $(OBJS) $(LIBFT)
 
 .c.o:
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<

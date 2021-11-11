@@ -1,50 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ps_more7.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 09:59:15 by kkamata           #+#    #+#             */
-/*   Updated: 2021/10/30 11:04:39 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/11/11 15:48:25 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static
-int	ps_more7_pb(t_stack *stack)
+void	init_count(t_count *count)
 {
-	pb(stack);
-	return (1);
+	count->pa = 0;
+	count->pb = 0;
+	count->ra = 0;
+	count->rb = 0;
 }
 
-static
-int	ps_more7_ra(t_stack *stack)
+void	ps_more7(t_stack *stack, int size_a)
 {
-	ra(stack);
-	return (1);
-}
+	t_pivot	pivot;
+	t_count	count;
 
-int	ps_more7(t_stack *stack, int size_a)
-{
-	int		pivot;
-	int		count_pb;
-	int		count_ra;
-	int		sorted_b;
-	int		sorted_a;
-
-	count_pb = 0;
-	count_ra = 0;
-	pivot = median(stack, stack->a);
+	init_count(&count);
+	init_pivot(stack, stack->a, &pivot, size_a);
 	while (size_a-- > 0)
 	{
-		if (stack->a->next->value < pivot)
-			count_pb += ps_more7_pb(stack);
+		if (stack->a->next->value >= pivot.large)
+			count.ra += ra(stack);
 		else
-			count_ra += ps_more7_ra(stack);
+		{
+			count.pb += pb(stack);
+			if (stack->b->next->value < pivot.small)
+				count.rb += rb(stack);
+		}
 	}
-	sorted_b = ps_qsort_b(stack, count_pb);
-	sorted_a = ps_qsort_a(stack, count_ra);
-	return (sorted_a + sorted_b);
+	ps_qsort_a(stack, count.ra);
+	ps_qsort_b(stack, count.pb - count.rb);
+	ps_qsort_b(stack, count.rb);
 }

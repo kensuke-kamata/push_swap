@@ -6,7 +6,7 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 08:11:39 by kkamata           #+#    #+#             */
-/*   Updated: 2021/10/28 08:12:09 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/11/10 15:33:17 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,17 @@ void	push(t_node *orig, t_node *dest)
 }
 
 // Push to stack A
-void	pa(t_stack *stack)
+int	pa(t_stack *stack)
 {
 	push(stack->b, stack->a);
 	lstadd_back(stack->ans, lstnew(PA));
+	return (1);
 }
 
 // Push to stack B
-void	pb(t_stack *stack)
+int	pb(t_stack *stack)
 {
 	push(stack->a, stack->b);
 	lstadd_back(stack->ans, lstnew(PB));
+	return (1);
 }

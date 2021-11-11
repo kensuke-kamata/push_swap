@@ -6,7 +6,7 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 21:52:53 by kkamata           #+#    #+#             */
-/*   Updated: 2021/11/02 22:18:52 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/11/11 16:18:27 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,12 @@ void	ps_exit(t_stack *stack, t_exit status, char *msg);
 
 // +--- init --- + //
 void	ps_init(t_stack *stack, int argc, char **argv);
+void	init_count(t_count *count);
 
 // +--- valid --- + //
 t_bool	is_duplicated(t_node *head);
-t_bool	is_sorted(t_node *head);
+t_bool	is_sorted_asc(t_node *head, int size);
+t_bool	is_sorted_desc(t_node *head, int size);
 
 // +--- lst --- + //
 t_node	*lstnew(int value);
@@ -50,8 +52,8 @@ int		lstsize(t_node *head);
 
 // +--- ops/push --- + //
 void	push(t_node *orig, t_node *dest);
-void	pa(t_stack *stack);
-void	pb(t_stack *stack);
+int		pa(t_stack *stack);
+int		pb(t_stack *stack);
 
 // +--- ops/swap --- + //
 void	swap(t_node *n1, t_node *n2);
@@ -60,13 +62,14 @@ void	sb(t_stack *stack);
 
 // +--- ops/rotate --- + //
 void	rotate(t_node *head);
-void	ra(t_stack *stack);
-void	rb(t_stack *stack);
+int		ra(t_stack *stack);
+int		rb(t_stack *stack);
 
 // +--- ops/rrotate --- + //
 void	rrotate(t_node *head);
 void	rra(t_stack *stack);
 void	rrb(t_stack *stack);
+void	rrr(t_stack *stack);
 
 // +--- ps_less7/main --- + //
 int		ps_less7(t_stack *stack, int size_a);
@@ -84,12 +87,30 @@ int		desc_3b(t_stack *stack);
 // +--- ps_less7/rule456 --- + //
 int		asc_456(t_stack *stack, int size_a);
 
-// +--- ps_more7/main --- + //
-int		ps_more7(t_stack *stack, int size_a);
-
-// +--- ps_more7/qsort --- + //
+// +--- ps_more7 --- + //
+void	ps_more7(t_stack *stack, int size_a);
 int		ps_qsort_a(t_stack *stack, int size_a);
 int		ps_qsort_b(t_stack *stack, int size_b);
+
+// +--- ps_more7/q_sort_a_utils --- + //
+void	ps_qsort_3a_132(t_stack *stack);
+void	ps_qsort_3a_213(t_stack *stack);
+void	ps_qsort_3a_231(t_stack *stack);
+void	ps_qsort_3a_312(t_stack *stack);
+void	ps_qsort_3a_321(t_stack *stack);
+
+// +--- ps_more7/q_sort_b_utils --- + //
+void	qsort_3b_123(t_stack *stack);
+void	qsort_3b_132(t_stack *stack);
+void	qsort_3b_213(t_stack *stack);
+void	qsort_3b_231(t_stack *stack);
+void	qsort_3b_312(t_stack *stack);
+
+// +--- ps_more7/ops --- + //
+void	ps_qsort_reverse(t_stack *stack, int count_ra, int count_rb);
+
+// +--- ps_more7/utils --- + //
+void	init_pivot(t_stack *stack, t_node *head, t_pivot *pivot, int size);
 
 // +--- output --- + //
 void	answer(t_node *head);
@@ -100,5 +121,8 @@ int		cancel(t_node *head, t_node *target);
 void	insertion_sort(int	*arr, int len);
 int		median(t_stack *stack, t_node *head);
 int		ps_atoi(t_stack *stack, char *str);
+void	debug(t_stack *stack);
+void	debug_pivot(t_pivot pivot);
+void	debug_array(int *arr, int size);
 
 #endif

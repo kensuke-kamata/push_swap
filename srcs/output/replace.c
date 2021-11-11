@@ -6,14 +6,14 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 22:05:47 by kkamata           #+#    #+#             */
-/*   Updated: 2021/11/02 22:09:13 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/11/11 11:21:07 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
 static
-int	lstreplace(t_node *n1, t_cmd cmd)
+int	lstreplace(t_node *n1, t_operation op)
 {
 	t_node	*n2;
 	t_node	*n3;
@@ -22,7 +22,7 @@ int	lstreplace(t_node *n1, t_cmd cmd)
 	n3 = n2->next;
 	n1->next = n3;
 	n3->prev = n1;
-	n3->value = cmd;
+	n3->value = op;
 	free(n2);
 	return (1);
 }

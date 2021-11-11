@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add.c                                              :+:      :+:    :+:   */
+/*   qsort_reverse.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/28 06:56:08 by kkamata           #+#    #+#             */
-/*   Updated: 2021/11/11 15:18:14 by kkamata          ###   ########.fr       */
+/*   Created: 2021/11/09 09:30:52 by kkamata           #+#    #+#             */
+/*   Updated: 2021/11/11 16:40:06 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	lstadd_back(t_node *sentinel, t_node *new)
+void	ps_qsort_reverse(t_stack *stack, int count_ra, int count_rb)
 {
-	if (!sentinel || !new)
-		return ;
-	new->prev = sentinel->prev;
-	sentinel->prev->next = new;
-	new->next = sentinel;
-	sentinel->prev = new;
-}
+	int		sub;
 
-void	lstadd_front(t_node *sentinel, t_node *new)
-{
-	if (!sentinel || !new)
-		return ;
-	new->next = sentinel->next;
-	sentinel->next->prev = new;
-	new->prev = sentinel;
-	sentinel->next = new;
+	sub = count_ra - count_rb;
+	if (sub > 0)
+	{
+		while (count_rb--)
+			rrr(stack);
+		while (sub--)
+			rra(stack);
+	}
+	else if (sub < 0)
+	{
+		while (count_ra--)
+			rrr(stack);
+		while (sub++)
+			rrb(stack);
+	}
+	else
+		while (count_ra--)
+			rrr(stack);
 }

@@ -6,7 +6,7 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 08:20:31 by kkamata           #+#    #+#             */
-/*   Updated: 2021/10/28 08:21:01 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/11/09 21:11:42 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	rrotate(t_node *head)
 
 	n1 = head->prev;
 	n2 = head->prev->prev;
+	if (n1 == head || n2 == head)
+		return ;
 	head->next->prev = n1;
 	n1->next = head->next;
 	head->next = n1;
@@ -38,4 +40,11 @@ void	rrb(t_stack *stack)
 {
 	rrotate(stack->b);
 	lstadd_back(stack->ans, lstnew(RRB));
+}
+
+void	rrr(t_stack *stack)
+{
+	rrotate(stack->a);
+	rrotate(stack->b);
+	lstadd_back(stack->ans, lstnew(RRR));
 }

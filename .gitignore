@@ -1,6 +1,10 @@
+.gitignore
 *.o
 push_swap
 libft.a
+a.out
+memo
+test.c
 
 pyviz.py
 push_swap_tester

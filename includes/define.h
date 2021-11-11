@@ -6,7 +6,7 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 06:13:20 by kkamata           #+#    #+#             */
-/*   Updated: 2021/10/30 09:28:15 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/11/11 11:24:10 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef enum e_exit
 	FAILURE,
 }	t_exit;
 
-typedef enum e_cmd
+typedef enum e_operation
 {
 	PA,
 	PB,
@@ -41,7 +41,21 @@ typedef enum e_cmd
 	RRA,
 	RRB,
 	RRR,
-}	t_cmd;
+}	t_operation;
+
+typedef struct s_count
+{
+	int				pa;
+	int				pb;
+	int				ra;
+	int				rb;
+}	t_count;
+
+typedef struct s_pivot
+{
+	int				small;
+	int				large;
+}	t_pivot;
 
 typedef struct s_node
 {

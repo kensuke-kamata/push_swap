@@ -1,33 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add.c                                              :+:      :+:    :+:   */
+/*   qsort_a_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/28 06:56:08 by kkamata           #+#    #+#             */
-/*   Updated: 2021/11/11 15:18:14 by kkamata          ###   ########.fr       */
+/*   Created: 2021/11/11 15:57:27 by kkamata           #+#    #+#             */
+/*   Updated: 2021/11/11 15:58:33 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	lstadd_back(t_node *sentinel, t_node *new)
+void	ps_qsort_3a_321(t_stack *stack)
 {
-	if (!sentinel || !new)
-		return ;
-	new->prev = sentinel->prev;
-	sentinel->prev->next = new;
-	new->next = sentinel;
-	sentinel->prev = new;
+	sa(stack);
+	ra(stack);
+	sa(stack);
+	rra(stack);
+	sa(stack);
 }
 
-void	lstadd_front(t_node *sentinel, t_node *new)
+void	ps_qsort_3a_132(t_stack *stack)
 {
-	if (!sentinel || !new)
-		return ;
-	new->next = sentinel->next;
-	sentinel->next->prev = new;
-	new->prev = sentinel;
-	sentinel->next = new;
+	ra(stack);
+	sa(stack);
+	rra(stack);
+}
+
+void	ps_qsort_3a_312(t_stack *stack)
+{
+	ra(stack);
+	sa(stack);
+	rra(stack);
+	sa(stack);
+}
+
+void	ps_qsort_3a_231(t_stack *stack)
+{
+	sa(stack);
+	ra(stack);
+	sa(stack);
+	rra(stack);
+}
+
+void	ps_qsort_3a_213(t_stack *stack)
+{
+	sa(stack);
 }

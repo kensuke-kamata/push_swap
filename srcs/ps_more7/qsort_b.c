@@ -6,80 +6,82 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 10:01:10 by kkamata           #+#    #+#             */
-/*   Updated: 2021/10/30 12:51:05 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/11/11 16:17:13 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
 static
-int	ps_qsort_pa(t_stack *stack)
+int	ps_size_pa(t_stack *stack, int size)
 {
-	pa(stack);
-	return (1);
-}
+	int		i;
 
-static
-int	ps_qsort_rb(t_stack *stack)
-{
-	rb(stack);
-	return (1);
-}
-
-static
-void	ps_back_rotate(t_stack *stack, int size_b)
-{
-	while (size_b-- > 0)
-	{
+	i = -1;
+	while (++i < size)
 		pa(stack);
-		ra(stack);
-	}
+	return (size);
 }
 
+// In descending order
 static
-int	ps_finsort_b(t_stack *stack, int size_b)
+int	ps_qsort_2b(t_stack *stack)
 {
-	if (is_sorted(stack->b))
-	{
-		ps_back_rotate(stack, size_b);
-		return (size_b);
-	}
-	if (size_b <= 2)
-	{
-		asc_2b(stack);
-		ps_back_rotate(stack, size_b);
-		return (size_b);
-	}
-	if (size_b == 3)
-	{
-		asc_3b(stack);
-		ps_back_rotate(stack, size_b);
-		return (size_b);
-	}
-	return (0);
+	desc_2b(stack);
+	return (ps_size_pa(stack, 2));
+}
+
+// In descending order
+static
+int	ps_qsort_3b(t_stack *stack)
+{
+	t_node	*n1;
+	t_node	*n2;
+	t_node	*n3;
+
+	n1 = stack->b->next;
+	n2 = stack->b->next->next;
+	n3 = stack->b->next->next->next;
+	if (n2->value < n1->value && n1->value < n3->value)
+		qsort_3b_213(stack);
+	else if (n3->value < n1->value && n1->value < n2->value)
+		qsort_3b_312(stack);
+	else if (n1->value < n3->value && n3->value < n2->value)
+		qsort_3b_132(stack);
+	else if (n2->value < n3->value && n3->value < n1->value)
+		qsort_3b_231(stack);
+	else if (n1->value < n2->value && n2->value < n3->value)
+		qsort_3b_123(stack);
+	return (3);
 }
 
 int	ps_qsort_b(t_stack *stack, int size_b)
 {
-	int		pivot;
-	int		count_pa;
-	int		count_rb;
-	int		sorted;
+	t_pivot	pivot;
+	t_count	count;
 
-	sorted = ps_finsort_b(stack, size_b);
-	if (sorted)
-		return (sorted);
-	count_pa = 0;
-	count_rb = 0;
-	pivot = median(stack, stack->b);
+	if (is_sorted_desc(stack->b, size_b))
+		return (ps_size_pa(stack, size_b));
+	if (size_b == 2)
+		return (ps_qsort_2b(stack));
+	if (size_b == 3)
+		return (ps_qsort_3b(stack));
+	init_count(&count);
+	init_pivot(stack, stack->b, &pivot, size_b);
 	while (size_b-- > 0)
 	{
-		if (stack->b->next->value >= pivot)
-			count_pa += ps_qsort_pa(stack);
+		if (stack->b->next->value < pivot.small)
+			count.rb += rb(stack);
 		else
-			count_rb += ps_qsort_rb(stack);
+		{
+			count.pa += pa(stack);
+			if (stack->a->next->value < pivot.large)
+				count.ra += ra(stack);
+		}
 	}
-	sorted += ps_qsort_b(stack, count_rb);
-	sorted += ps_qsort_a(stack, count_pa);
-	return (sorted);
+	ps_qsort_a(stack, count.pa - count.ra);
+	ps_qsort_reverse(stack, count.ra, count.rb);
+	ps_qsort_a(stack, count.ra);
+	ps_qsort_b(stack, count.rb);
+	return (0);
 }

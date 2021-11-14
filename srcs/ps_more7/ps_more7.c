@@ -6,7 +6,7 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 09:59:15 by kkamata           #+#    #+#             */
-/*   Updated: 2021/11/11 15:48:25 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/11/14 21:13:00 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ void	init_count(t_count *count)
 	count->rb = 0;
 }
 
-void	ps_more7(t_stack *stack, int size_a)
+int	ps_more7(t_stack *stack, int size_a)
 {
 	t_pivot	pivot;
 	t_count	count;
+	int		sorted;
 
 	init_count(&count);
 	init_pivot(stack, stack->a, &pivot, size_a);
@@ -38,7 +39,9 @@ void	ps_more7(t_stack *stack, int size_a)
 				count.rb += rb(stack);
 		}
 	}
-	ps_qsort_a(stack, count.ra);
-	ps_qsort_b(stack, count.pb - count.rb);
-	ps_qsort_b(stack, count.rb);
+	sorted = 0;
+	sorted += ps_qsort_a(stack, count.ra);
+	sorted += ps_qsort_b(stack, count.pb - count.rb);
+	sorted += ps_qsort_b(stack, count.rb);
+	return (sorted);
 }

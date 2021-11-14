@@ -6,7 +6,7 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 21:52:53 by kkamata           #+#    #+#             */
-/*   Updated: 2021/11/11 16:18:27 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/11/14 21:04:07 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int		desc_3b(t_stack *stack);
 int		asc_456(t_stack *stack, int size_a);
 
 // +--- ps_more7 --- + //
-void	ps_more7(t_stack *stack, int size_a);
+int		ps_more7(t_stack *stack, int size_a);
 int		ps_qsort_a(t_stack *stack, int size_a);
 int		ps_qsort_b(t_stack *stack, int size_b);
 

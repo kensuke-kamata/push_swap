@@ -6,7 +6,7 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 22:20:58 by kkamata           #+#    #+#             */
-/*   Updated: 2021/11/11 16:58:29 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/11/14 21:07:11 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	ps_exit(t_stack *stack, t_exit status, char *msg)
 int	main(int argc, char **argv)
 {
 	int			size;
+	int			sorted;
 	t_stack		*stack;
 
 	size = argc - 1;
@@ -47,9 +48,10 @@ int	main(int argc, char **argv)
 	if (is_sorted_asc(stack->a, size))
 		ps_exit(stack, SUCCESS, NULL);
 	if (size < 7)
-		ps_less7(stack, size);
+		sorted = ps_less7(stack, size);
 	if (size >= 7)
-		ps_more7(stack, size);
-	answer(stack->ans);
+		sorted = ps_more7(stack, size);
+	if (sorted == size)
+		answer(stack->ans);
 	ps_exit(stack, SUCCESS, NULL);
 }

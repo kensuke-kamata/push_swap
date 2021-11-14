@@ -6,7 +6,7 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 10:51:48 by kkamata           #+#    #+#             */
-/*   Updated: 2021/11/14 20:51:12 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/11/14 21:14:25 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,9 @@ int	ps_qsort_a(t_stack *stack, int size_a)
 {
 	t_pivot	pivot;
 	t_count	count;
+	int		sorted;
 
+	sorted = 0;
 	if (is_sorted_asc(stack->a, size_a))
 		return (size_a);
 	if (size_a == 2)
@@ -74,8 +76,8 @@ int	ps_qsort_a(t_stack *stack, int size_a)
 	init_pivot(stack, stack->a, &pivot, size_a);
 	_ps_qsort_a(stack, &pivot, &count, size_a);
 	ps_qsort_reverse(stack, count.ra, count.rb);
-	ps_qsort_a(stack, count.ra);
-	ps_qsort_b(stack, count.rb);
-	ps_qsort_b(stack, count.pb - count.rb);
-	return (0);
+	sorted += ps_qsort_a(stack, count.ra);
+	sorted += ps_qsort_b(stack, count.rb);
+	sorted += ps_qsort_b(stack, count.pb - count.rb);
+	return (sorted);
 }

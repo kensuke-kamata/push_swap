@@ -6,7 +6,7 @@
 /*   By: kkamata <kkamata@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/30 10:01:10 by kkamata           #+#    #+#             */
-/*   Updated: 2021/11/11 16:17:13 by kkamata          ###   ########.fr       */
+/*   Updated: 2021/11/14 20:54:12 by kkamata          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,22 @@ int	ps_qsort_3b(t_stack *stack)
 	return (3);
 }
 
+static
+void	_ps_qsort_b(t_stack *stack, t_pivot *pivot, t_count *count, int size_b)
+{
+	while (size_b-- > 0)
+	{
+		if (stack->b->next->value < pivot->small)
+			count->rb += rb(stack);
+		else
+		{
+			count->pa += pa(stack);
+			if (stack->a->next->value < pivot->large)
+				count->ra += ra(stack);
+		}
+	}
+}
+
 int	ps_qsort_b(t_stack *stack, int size_b)
 {
 	t_pivot	pivot;
@@ -68,17 +84,7 @@ int	ps_qsort_b(t_stack *stack, int size_b)
 		return (ps_qsort_3b(stack));
 	init_count(&count);
 	init_pivot(stack, stack->b, &pivot, size_b);
-	while (size_b-- > 0)
-	{
-		if (stack->b->next->value < pivot.small)
-			count.rb += rb(stack);
-		else
-		{
-			count.pa += pa(stack);
-			if (stack->a->next->value < pivot.large)
-				count.ra += ra(stack);
-		}
-	}
+	_ps_qsort_b(stack, &pivot, &count, size_b);
 	ps_qsort_a(stack, count.pa - count.ra);
 	ps_qsort_reverse(stack, count.ra, count.rb);
 	ps_qsort_a(stack, count.ra);
